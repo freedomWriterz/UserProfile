@@ -1,0 +1,27 @@
+.prof_img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: auto;
+  overflow: hidden;
+  margin-bottom:30px;
+  margin-top:30px
+}
+
+.prof_img img {
+  width: 100%;
+  height: 100%;
+}
+.user_name {
+  text-align: center;
+}
+
+.btn-lg{
+    margin: 20px 5px
+}
+
+button.btn.btn-danger.delet_post {
+    float: right;
+    margin-top: -15px;
+    margin-right: -15px;
+}
