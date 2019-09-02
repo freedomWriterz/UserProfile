@@ -4,7 +4,8 @@ export default class AddPost extends Component {
   state = {
     postTitle: "",
     postText: "",
-    imgUrl: ""
+    imgUrl: "",
+    posts: [{}]
   };
 
   postTitle = e => {
@@ -24,16 +25,23 @@ export default class AddPost extends Component {
       imgUrl: e.target.value
     });
   };
-  addItem(e) {
-    console.log();
 
-
-
+  addItem=(e)=> {
+    e.preventDefault();
+    const ptitle = document.getElementById('psTitile').value;
+    const ptext =  document.getElementById('txtarea').value;
+    const imgurl = document.getElementById('imgurl').value;
+    const obj = { postTitle: ptitle, postText: ptext, imgUrl: imgurl };
+    console.log( this.props);
     
+    this.props.addItem(obj)
   }
+
   render() {
     return (
       <div>
+
+      <form onSubmit={this.addItem}>
         <div className="form-group">
           <h3>New Post</h3>
 
@@ -41,12 +49,14 @@ export default class AddPost extends Component {
 
           <input
             type="text"
+            id="psTitile"
             className="form-control"
             placeholder="post Titile"
             onChange={this.postTitle}
           />
           <label>Example text</label>
           <textarea
+          id="txtarea"
             className="form-control"
             rows="6"
             onChange={this.postText}
@@ -55,6 +65,7 @@ export default class AddPost extends Component {
           <div className="form-group">
             <label>img URL</label>
             <input
+            id="imgurl"
               type="text"
               className="form-control"
               placeholder="www.imgURL.jpg"
@@ -64,12 +75,14 @@ export default class AddPost extends Component {
         </div>
         <button
           type="submit"
-          onClick={this.addItem}
+          // onSubmit={this.addItem}
           className="btn btn-primary btn-lg"
         >
           Puplish
         </button>
+      </form>
       </div>
+
     );
   }
 }

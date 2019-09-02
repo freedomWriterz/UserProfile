@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import UserId from "./UserId";
 import AddPost from "./AddPost";
 import MyPosts from "./MyPosts";
+
 export default class UserPage extends Component {
   state = {
     posts: [
@@ -16,15 +17,15 @@ export default class UserPage extends Component {
       {
         _id: "2",
         imgUrl: "https://via.placeholder.com/200x100",
-        userName: "Alaarg",
+        userName: "lolo",
         postTitle: "post from database",
         postText:
           "Loremd a type specimen book. It has survived not only five centuries, but also the l"
       },
       {
-        _id: " 3",
+        _id: "3",
         imgUrl: "https://via.placeholder.com/200x100",
-        userName: "Alaarg",
+        userName: "max",
         postTitle: "post from database",
         postText:
           "Lorem Ipsum is asurvived not only five centuries, but also the l"
@@ -32,7 +33,7 @@ export default class UserPage extends Component {
       {
         _id: "4",
         imgUrl: "https://via.placeholder.com/200x100",
-        userName: "Alaarg",
+        userName: "soso",
         postTitle: "post from database",
         postText:
           "Lorem Ipsum is asurvived not only five centuries, but also the l"
@@ -40,10 +41,21 @@ export default class UserPage extends Component {
     ]
   };
 
-  deletePost = id => {
-    console.log("deleted");
+  addItem = (x) => {
+  
     this.setState({
-      posts: this.state.posts.filter(post => post.id !== id)
+      posts: [...this.state.posts, x]
+    })
+    console.log(x);
+  
+  }
+
+  
+
+  deletePost = id => {
+    console.log("deleted", typeof id);
+    this.setState({
+      posts: this.state.posts.filter(post => post._id !== id)
     });
   };
   render() {
@@ -65,13 +77,13 @@ export default class UserPage extends Component {
           </button>
         </div>
 
-        <AddPost />
+        <AddPost  addItem={this.addItem} />
 
         <h3 className="MyPosts">My Posts</h3>
 
         {posts.map((post, index) => {
           return (
-            <MyPosts key={index} posts={post} deletePost={this.deletePost} />
+            <MyPosts key={index} post={post} deletePost={this.deletePost} />
           );
         })}
       </div>
