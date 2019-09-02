@@ -6,7 +6,7 @@ export default class UserId extends Component {
     return (
       <div>
         <div className="prof_img">
-          <img src={imgURL} />
+          <img src={imgURL}  alt=""/>
         </div>
         <h3 className="text-center">{userName}</h3>
       </div>
